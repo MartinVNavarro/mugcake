@@ -1,0 +1,15 @@
+{
+    "ingredients":[
+        {
+            "name": "firstName",
+            "type": "string",
+            "size": 50,
+            "values":[
+                "bob",
+                "jimmy",
+                "linda",
+                "maria"
+            ]
+        }
+    ]
+}
