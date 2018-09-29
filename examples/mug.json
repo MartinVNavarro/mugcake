@@ -10,6 +10,17 @@
                 "linda",
                 "maria"
             ]
+        },
+        {
+            "name": "lastName",
+            "type": "string",
+            "size": 50,
+            "values":[
+                "smith",
+                "jones",
+                "brown",
+                "white"   
+            ]
         }
     ]
 }
