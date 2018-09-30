@@ -8,6 +8,7 @@ import (
 	"github.com/mitchellh/mapstructure"
 )
 
+// Ingredient holds data for an ingredient
 type Ingredient struct {
 	Name      string
 	Type      string
@@ -16,18 +17,34 @@ type Ingredient struct {
 	Values    []string
 }
 
+// Add a value to an ingridient's values
+// No action if exists
 func (ing *Ingredient) Add(value string) {
-	for _, i := range ing.Values {
-		if i == value {
-			return
-		}
+	if i := ing.IndexOf(value); i >= 0 {
+		return
 	}
 
 	ing.Values = append(ing.Values, value)
 }
 
+// Remove a value from an Ingredient
+// No action if does not exists
 func (ing *Ingredient) Remove(value string) {
-	// TODO User must be able to remove a value from an ingredient
+	if i := ing.IndexOf(value); i >= 0 {
+		ing.Values = append(ing.Values[:i], ing.Values[i+1:]...)
+	}
+}
+
+// IndexOf returns the index of a value in an Ingredient's values
+// Returns -1 if not found
+func (ing *Ingredient) IndexOf(value string) int {
+	for i, v := range ing.Values {
+		if v == value {
+			return i
+		}
+	}
+
+	return -1
 }
 
 // NewFromReader returns an instance to a new Ingredient from the
